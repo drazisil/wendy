@@ -1,8 +1,9 @@
 const http = require("http")
+const app = require("./src")
 
 const server = http.createServer(((req, res) => {
     console.log(`Request for ${req.url}`)
-    res.end("Hello, World!")
+    res.end(app.hello())
 }))
 
 server.on("listening", () => {

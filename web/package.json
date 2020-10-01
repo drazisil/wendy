@@ -4,13 +4,24 @@
   "description": "The web server for wendy",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"no tests yet\" && exit 1"
+    "test": "jest"
   },
   "author": "Drazi (drazi.crendraven@gmail.com)",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
+    "@jest/globals": "26.4.2",
     "eslint": "7.10.0",
+    "jest": "26.4.2",
     "winston": "3.3.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "*.js",
+      "*/**/*.js"
+    ],
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "coverage.*"
+    ]
   }
 }
