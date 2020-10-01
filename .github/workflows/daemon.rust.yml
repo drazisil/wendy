@@ -18,10 +18,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Coverage setup
+      run: |
+        export CARGO_INCREMENTAL=0
+        export RUSTFLAGS="-Zprofile -Ccodegen-units=1 -Copt-level=0 -Clink-dead-code -Coverflow-checks=off -Zpanic_abort_tests -Cpanic=abort"
+        export RUSTDOCFLAGS="-Cpanic=abort"
     - name: Build
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
+    - name: Generate coverage report
+      run: grcov ./target/debug -t lcov -s .
     - name: Codecov
       uses: codecov/codecov-action@v1.0.13
       with:
