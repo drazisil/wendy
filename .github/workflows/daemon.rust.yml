@@ -34,7 +34,7 @@ jobs:
         chmod +w target/debug
         grcov ./target/debug/ -s . -t lcov --llvm --branch --ignore-not-existing -o ./target/debug/coverage.lcov
     - name: Codecov
-      uses: codecov/codecov-action@v1.0.15
+      uses: codecov/codecov-action@v1.1.0
       with:
         name: daemon
         directory: daemon
